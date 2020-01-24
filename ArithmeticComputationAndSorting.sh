@@ -20,3 +20,22 @@ do
 	count=$(( count+1 ))
 done
 echo ${array[@]}
+length=${#array[@]}
+
+#Descending Order Function
+function descendingOrder() {
+	for (( i=0; i<$length; i++ ))
+	do
+		for ((j=i+1; j<=$length; j++ ))
+		do
+			if [[ ${array[i]%.*} -lt ${array[j]%.*} ]]
+			then
+				temp=${array[i]}
+				array[i]=${array[j]}
+				array[j]=$temp
+			fi
+		done
+	done
+	echo ${array[@]}
+}
+descendingOrder
