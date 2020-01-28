@@ -1,5 +1,5 @@
 #!/bin/bash -x
-declare -A ResultDictionary
+declare -A resultDictionary
 read -p "Enter first number: " a
 read -p "Enter second number: " b
 read -p "Enter third number: " c
@@ -9,14 +9,14 @@ result2=`echo "$a*$b+$c" | bc`
 result3=`echo "scale=2; $c+$a/$b" | bc`
 result4=`echo "$a%$b+$c" | bc`
 
-ResultDictionary[result1]=$result1
-ResultDictionary[result2]=$result2
-ResultDictionary[result3]=$result3
-ResultDictionary[result4]=$result4
+resultDictionary[result1]=$result1
+resultDictionary[result2]=$result2
+resultDictionary[result3]=$result3
+resultDictionary[result4]=$result4
 
-while [[ $count -ne ${#ResultDictionary[@]} ]]
+while [[ $count -ne ${#resultDictionary[@]} ]]
 do
-	array[$count]=${ResultDictionary[result"$(( count+1 ))"]}
+	array[$count]=${resultDictionary[result"$(( count+1 ))"]}
 	count=$(( count+1 ))
 done
 echo ${array[@]}
